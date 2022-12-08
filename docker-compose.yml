@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d/
+  server:
+    build: ./server
+    restart: always
+    environment:
+      - HOST=0.0.0.0
+      - PORT=80
+      - MYSQLHOST=mysql
+      - MYSQLUSER=root
+      - MYSQLPASS=example
+    volumes:
+      - ./server/backend:/app/backend
+      - ./server/frontend:/app/frontend
+    ports:
+      - "80:80"

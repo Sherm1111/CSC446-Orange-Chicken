@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 
 <html>
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-	<link type="text/css" rel="stylesheet" href="common.css">
-	<script type="text/javascript" src="common.js"></script>
+	<link type="text/css" rel="stylesheet" href="login.css">
     <head>
         <title>
             Access Control Project
@@ -12,9 +16,10 @@
 
     <body>
         <div class="content">
-            <button class="button" onclick="query()">Query</button>
+            <textarea rows="2" cols="20" placeholder="Username"></textarea>
+            <textarea rows="2" cols="20" placeholder="Password"></textarea>
             <p></p>
-            <textarea id="response" rows="20" cols="45" placeholder="Database Results"></textarea>
+            <button class="button">login</button>
 		</div>
     </body>
 </html>

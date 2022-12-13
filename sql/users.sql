@@ -11,7 +11,31 @@ CREATE TABLE users (
 
 INSERT INTO users
 VALUES(
-    "user",
-    "pass",
-    "user@example.com"
+    "karina",
+    "anirak",
+    "karina@example.com"
+);
+INSERT INTO users
+VALUES(
+    "jacob",
+    "bocaj",
+    "jacob@example.com"
+);
+INSERT INTO users
+VALUES(
+    "mary",
+    "yram",
+    "mary@example.com"
+);
+INSERT INTO users
+VALUES(
+    "stephanie",
+    "einahpets",
+    "stephanie@example.com"
+);
+INSERT INTO users
+VALUES(
+    "landon",
+    "nodnal",
+    "landon@example.com"
 );

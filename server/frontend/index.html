@@ -8,6 +8,7 @@
     </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
 	<link type="text/css" rel="stylesheet" href="login.css">
+    <script type="text/javascript" src="common.js"></script>
     <head>
         <title>
             Access Control Project
@@ -16,10 +17,12 @@
 
     <body>
         <div class="content">
-            <textarea rows="2" cols="20" placeholder="Username"></textarea>
-            <textarea rows="2" cols="20" placeholder="Password"></textarea>
+            <!-- user name and password boxes-->
+            <input id="usr" rows="2" cols="20" placeholder="Username"></input>
+            <input id= "passwd" rows="2" cols="20" placeholder="Password"></input>
             <p></p>
-            <button class="button">login</button>
+            <!-- if buttons pressed sends the input to the login() function-->
+            <button class="button" onclick="login(document.getElementById('usr'),document.getElementById('passwd'))">login</button>
 		</div>
     </body>
 </html>

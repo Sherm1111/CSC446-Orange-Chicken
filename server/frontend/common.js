@@ -17,6 +17,9 @@ function login(usr,passwd) {
         if(response.status == 200){
             window.location.href = "/query.html";
         }
+        else{
+            alert("username or password does not match");
+        }
     })
     //catch errors
     .catch((err) => {

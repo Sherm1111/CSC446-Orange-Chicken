@@ -41,7 +41,7 @@ app.get("/query", function (request, response) {
 app.post("/login", function (request, response) {
   //recieves the username and password
   var data = request.body;
-  //hashes password
+  // hashes password
   hashpass = createHash('sha256').update(data['password']).digest('hex');
   //makes username something usable for later in code
   user = "'"+data["username"]+"'";
@@ -53,6 +53,9 @@ app.post("/login", function (request, response) {
       console.error(error.message);
       response.status(500).send("database error");
       //if the input password matches input username password from query
+    } else if ("'" + data['password'] + "'" == ''){
+      //  if password is blank
+      response.status(400).send("UNAUTHORIZED");
     } else if (hashpass == results[0]['password']){
       //send 200 OK
       console.log("200 OK");

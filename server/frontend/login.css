@@ -1,5 +1,5 @@
 body {
-    background-color: darkblue;
+    background-color: rgb(11, 173, 218);
 }
 .content{
     position:absolute;
@@ -12,7 +12,8 @@ body {
 }
 .button {
     background-color: black;
-    border: green;
+    border: 2px solid rgb(18, 234, 21);
+    border-radius: 8px;
     color: whitesmoke;
     padding: 5px 20px;
     text-align: center;
@@ -21,4 +22,9 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-left: 40%;
     cursor: pointer;
+}
+
+.button:hover {
+    background-color: azure;
+    color: black;
 }

@@ -5,14 +5,22 @@
 	<link type="text/css" rel="stylesheet" href="common.css">
 	<script type="text/javascript" src="common.js"></script>
     <head>
+		<!-- This is linking fonts for css later -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+		
         <title>
             Access Control Project
         </title>
     </head>
 
     <body>
+		<div class="title">
+			<h1>Retrive data with Query or Return to Log In page</h1>
+		</div>
         <div class="content">
-            <button class="logout" onclick="logout()">logout</button>
+            <button class="logout" onclick="logout()">LOG OUT</button>
             <button class="button" onclick="query()">Query</button>
             <p></p>
             <textarea id="response" rows="20" cols="45" placeholder="Database Results"></textarea>

@@ -1,6 +1,27 @@
 body {
-    background-color: rgb(11, 173, 218);
+	background-image: url(https://media.istockphoto.com/id/483120255/photo/asian-oranage-chicken-with-green-onions.jpg?b=1&s=170667a&w=0&k=20&c=_loRhZ0tGUM1t2y-kckpfFcPfZvhxGs5Atp6sCslvPI=),
+		radial-gradient(circle, #99ff99, #ffffe6);
+	background-repeat: no-repeat;	
+	background-size: contain;
+	background-position: center;
+	background-attachment: fixed;
 }
+.welcome-message{
+	
+	margin: 10% 5% 0% 5%;
+    background-color: rgb(235, 177, 120);
+}
+.title{
+	font-family: 'DM Serif Display', serif;
+    text-align: center;
+}
+.instructions{
+	/* font-family: 'DM Serif Display', serif; */
+	font-family: Eczar;
+    text-align: center;
+	padding: 0% 0% 0% 0%;
+}
+
 .content{
     position:absolute;
     top:50%;

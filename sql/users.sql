@@ -45,3 +45,11 @@ VALUES(
     "landon@example.com",
     "role5"
 );
+
+CREATE TABLE logs(
+    username VARCHAR(255),
+    password VARCHAR(255),
+    timestamp    VARCHAR(255),
+    success BOOLEAN,
+    PRIMARY KEY (timestamp)
+);

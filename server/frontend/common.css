@@ -11,7 +11,10 @@ body {
     margin-top:-100px;
 }
 #databaseAccess{
-	margin-left: 50%;
+	margin-left: 49%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trsebuchet MS', sans-serif;
+	height: 30px;
+	padding: 5px;
 	/* height:200px; */
 }
 h1{

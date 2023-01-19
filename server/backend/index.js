@@ -9,8 +9,6 @@ const HOST = String(process.env.HOST);
 const MYSQLHOST = String(process.env.MYSQLHOST);
 const MYSQLUSER = String(process.env.MYSQLUSER);
 const MYSQLPASS = String(process.env.MYSQLPASS);
-const SQL = "SELECT * FROM users;"
-const SQL2 = "SELECT * FROM logs;"
 
 
 const app = express();
@@ -31,19 +29,51 @@ app.use("/", express.static("frontend"));
 app.post("/query", async (request, response) => {
   //get the jwt
   var data = request.body;
+  SQL = "SELECT * FROM "+data[1]+";"
+  //console.log(SQL)
+  //console.log(data)
   //verify
   try{
-    jwt.verify(data[1],'secret')
-    console.log(jwt.verify(data[1],'secret'))
-    connection.query(SQL2, [true], (error, results, fields) => {
-      if (error) {
-        console.error(error.message);
-        response.status(500).send("database error");
-      } else {
-        //console.log(results);
-        response.send(results);
-      }
-    });
+    const arr = jwt.verify(data[0][1],'secret')
+    //console.log(arr['role'])
+    //console.log(data[0][1])
+    if(data[1] == "logs" && (arr['role'] == 'admin' || arr['role'] == 'IT')){
+      //jwt.verify(data[0][1],'secret')
+      //console.log(jwt.verify(data[0][1],'secret'))
+      connection.query(SQL, [true], (error, results, fields) => {
+        if (error) {
+          console.error(error.message);
+          response.status(500).send("database error");
+        } else {
+          //console.log(results);
+          response.send(results);
+        }
+     
+     });
+    }else if(data[1] == "users" && (arr['role'] == 'admin')){
+      connection.query(SQL, [true], (error, results, fields) => {
+        if (error) {
+          console.error(error.message);
+          response.status(500).send("database error");
+        } else {
+          //console.log(results);
+          response.send(results);
+        }
+      })
+    }else if(data[1] == "roles" && (arr['role'] == 'user')){
+      connection.query(SQL, [true], (error, results, fields) => {
+        if (error) {
+          console.error(error.message);
+          response.status(500).send("database error");
+        } else {
+          //console.log(results);
+          response.send(results);
+        }
+      })
+    }
+    else{
+      response.send("unauthorized")
+    }
   }catch{
     response.send("401")
   }
@@ -80,7 +110,6 @@ app.post("/login", async (request, response) => {
         fillLogs(data,true)
         //send token to common.js
         response.send(token)
-        
         
       } else {
         //if username/password are not in database in correct order prevent login
@@ -119,7 +148,7 @@ async function fillLogs(userInfo, success){
   const values = [username, password, timeStamp, success];
 
   connection.query(sql, values, function(err, result) {
-    console.log(values)
+    //console.log(values)
     if (err) {
       console.log(err);
     }else{console.log("1 record instered", result.affectedRows)}

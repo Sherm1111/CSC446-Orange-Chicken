@@ -1,5 +1,5 @@
 var parsedUrl = new URL(window.location.href);
-const tableAccessed = document.getElementById("databaseAccess");
+
 
 
 //logout button
@@ -49,10 +49,15 @@ function query() {
     const searchParams = new URL(url).searchParams
     const querystring = new URLSearchParams(searchParams)
     const tokenarr = Array.from(querystring)
+    //select a table
+    const tableAccessed = document.getElementById("databaseAccess");
+    var tableSelected = tableAccessed.options[tableAccessed.selectedIndex].value;
+    //add logs to token array to send to api
+    tokenarr.push(tableSelected)
     fetch("http://" + parsedUrl.host + "/query", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(tokenarr[0])
+        body: JSON.stringify(tokenarr)
     })
     .then((resp) =>
         resp.text(),
@@ -69,6 +74,6 @@ function query() {
     .catch((err) => {
         console.log(err);
     })
-	var tableSeleteced = tableAccessed.options[tableAccessed.selectedIndex].value;
-	console.log(tableAccessed);
+	
+	
 }

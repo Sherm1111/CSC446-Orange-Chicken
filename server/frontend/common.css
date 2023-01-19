@@ -2,13 +2,14 @@ body {
     background-color: #eba054;
 }
 .content{
-    position:absolute;
-    top:40%;
-    left:45%;
+    /* position:absolute; */
+    /* top:40%; */
+    margin-left:32%;
+	margin-top:2%;
     width :200px;
     height:200px;
-    margin-left:-100px;
-    margin-top:-100px;
+    /* margin-left:-100px; */
+    /* margin-top:-100px; */
 }
 #databaseAccess{
 	margin-left: 49%;

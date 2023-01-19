@@ -1,10 +1,12 @@
 var parsedUrl = new URL(window.location.href);
+const tableAccessed = document.getElementById("databaseAccess");
 
 
 //logout button
 function logout(){
     window.location.href = '/'
 }
+
 
 
 function login(usr,passwd) {
@@ -67,4 +69,6 @@ function query() {
     .catch((err) => {
         console.log(err);
     })
+	var tableSeleteced = tableAccessed.options[tableAccessed.selectedIndex].value;
+	console.log(tableAccessed);
 }

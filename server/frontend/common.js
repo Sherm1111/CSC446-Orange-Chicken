@@ -1,5 +1,4 @@
 var parsedUrl = new URL(window.location.href);
-const tableAccessed = document.getElementById("databaseAccess");
 
 
 //logout button
@@ -49,6 +48,10 @@ function query() {
     const searchParams = new URL(url).searchParams
     const querystring = new URLSearchParams(searchParams)
     const tokenarr = Array.from(querystring)
+	const tableAccessed = document.getElementById("databaseAccess");
+	var tableSelected = tableAccessed.options[tableAccessed.selectedIndex].value;
+	console.log(tableSelected);
+	
     fetch("http://" + parsedUrl.host + "/query", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
@@ -69,6 +72,4 @@ function query() {
     .catch((err) => {
         console.log(err);
     })
-	var tableSeleteced = tableAccessed.options[tableAccessed.selectedIndex].value;
-	console.log(tableAccessed);
 }

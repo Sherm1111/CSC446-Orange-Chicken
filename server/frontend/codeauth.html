@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+	<link type="text/css" rel="stylesheet" href="common.css">
+	<script type="text/javascript" src="common.js"></script>
+<body>
+
+<h1>Authentication</h1>
+
+<p>Provide the 8-digit code provided:</p>
+
+<form action="/action_page.php">
+  <label for="code">Code:</label>
+  <input type="code" id="code" name="code" pattern=".{8,}" title="eight characters">
+  <form method="POST" action="query.html">  
+  <input type="submit">
+</form>
+
+</body>
+</html>

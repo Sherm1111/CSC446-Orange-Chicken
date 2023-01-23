@@ -51,7 +51,8 @@ CREATE TABLE logs(
     password VARCHAR(255),
     timestamp    VARCHAR(255),
     success BOOLEAN,
-    PRIMARY KEY (timestamp)
+    PRIMARY KEY (timestamp),
+    auth BOOLEAN
 );
 
  CREATE TABLE roles(

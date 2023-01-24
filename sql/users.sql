@@ -52,7 +52,7 @@ CREATE TABLE logs(
     timestamp    VARCHAR(255),
     success BOOLEAN,
     PRIMARY KEY (timestamp),
-    auth BOOLEAN
+    success BOOLEAN
 );
 
  CREATE TABLE roles(

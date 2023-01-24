@@ -143,9 +143,9 @@ async function fillLogs(userInfo, success){
   var password = await hashPassword(userInfo['password'])
   var success = success;
   var timeStamp = Math.floor(Date.now() / 1000);
-  var auth = success; // success if double authentication code matches
+  var auth = true; // success if double authentication code matches
 
-  const sql = `INSERT INTO logs (username, password, timestamp, success, authorized) VALUES (?, ?, ?, ?, ?)`;
+  const sql = `INSERT INTO logs (username, password, timestamp, success, auth) VALUES (?, ?, ?, ?, ?)`;
   const values = [username, password, timeStamp, success, auth];
 
   connection.query(sql, values, function(err, result) {

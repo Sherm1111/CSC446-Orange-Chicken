@@ -1,4 +1,8 @@
 var parsedUrl = new URL(window.location.href);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 672146f1775afda3c5970adbaf2d2f5347f440ec
 
 
 //logout button
@@ -48,14 +52,22 @@ function query() {
     const searchParams = new URL(url).searchParams
     const querystring = new URLSearchParams(searchParams)
     const tokenarr = Array.from(querystring)
+<<<<<<< HEAD
 	const tableAccessed = document.getElementById("databaseAccess");
 	var tableSelected = tableAccessed.options[tableAccessed.selectedIndex].value;
 	console.log(tableSelected);
 	
+=======
+    //select a table
+    const tableAccessed = document.getElementById("databaseAccess");
+    var tableSelected = tableAccessed.options[tableAccessed.selectedIndex].value;
+    //add logs to token array to send to api
+    tokenarr.push(tableSelected)
+>>>>>>> 672146f1775afda3c5970adbaf2d2f5347f440ec
     fetch("http://" + parsedUrl.host + "/query", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(tokenarr[0])
+        body: JSON.stringify(tokenarr)
     })
     .then((resp) =>
         resp.text(),
@@ -72,4 +84,9 @@ function query() {
     .catch((err) => {
         console.log(err);
     })
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 672146f1775afda3c5970adbaf2d2f5347f440ec
 }

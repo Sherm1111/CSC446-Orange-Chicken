@@ -10,7 +10,9 @@ function logout(){
     window.location.href = '/'
 }
 
-
+function authenticate(auth) {
+    window.location.href = "/login.html?"+querystr;
+}
 
 function login(usr,passwd) {
     //post request

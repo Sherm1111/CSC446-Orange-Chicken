@@ -126,6 +126,7 @@ app.post("/login", async (request, response) => {
   });
 })
 
+
 async function hashPassword(password){
   //console.log(data)
   var salt = await bc.genSalt();

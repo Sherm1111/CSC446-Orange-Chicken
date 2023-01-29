@@ -75,21 +75,38 @@ function query() {
     })
 }
 
-async function authenticate(code) {    
-    //get generated code
-    var secret_key = "secret";
-    var current_time = Date.now();
-    var rounded_time_30sec = String(current_time - (current_time % 30));
-    var data = rounded_time_30sec + secret_key;
-    var hashed_code = createHash('sha256').update(data).digest('hex');
-    var short_hashed_code = hashed_code.substring(0,5);
-    console.log(short_hashed_code);
-    if(short_hashed_code == code){
-        window.location.href = "/codeauth.html";
-    }
-    else{
-        alert("incorrect code");
-    }
-
-
+function authenticate(code) {
+    //get token from URL
+    const url = window.location.href
+    const searchParams = new URL(url).searchParams
+    const querystring = new URLSearchParams(searchParams)
+    const tokenarr = Array.from(querystring)
+    //add logs to token array to send to api
+    tokenarr.push(code)
+    //post request
+    fetch("http://" + parsedUrl.host + "/authCode", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(code)
+    })
+        .then(async (response) => {
+            console.log("break")
+            //prints to console the status
+            console.log(response.status)
+            //if status is OK move to query page
+            if(response.status == 200){
+                window.location.href = "/query.html?"+querystr;;
+            }
+            else{
+                console.log("break2")
+                alert("code entered is incorrect");
+            }
+        })
+        .then((data) => {
+            console.log()
+        })
+        //catch errors
+        .catch((err) => {
+            console.log(err);
+        })
 }

@@ -79,6 +79,40 @@ app.post("/query", async (request, response) => {
   }
 })
 
+app.post("/authCode", async (request, response) => {    
+  var code = request.body;
+  
+  //get generated code
+  var secret_key = "secret";
+  var current_time = Date.now();
+  var rounded_time_30sec = String(current_time - (current_time % 30));
+  var data = rounded_time_30sec + secret_key;
+  var hashed_code = createHash('sha256').update(data).digest('hex');
+  var short_hashed_code = hashed_code.substring(0,5);
+  
+  console.log("new code = ", short_hashed_code);
+  console.log("old code = ", code);
+
+  if (code == '') {
+    //code field is blank
+    response.status(400);
+    console.log("400 blank")
+
+
+    //if the input password matches input username password from query
+  } else if (code != short_hashed_code){
+    //  if codes do not match
+    response.status(400);
+    console.log("400 no match")
+
+    //compares hashed password in database with hashed and salted password given from user.
+  } else if (short_hashed_code == code){
+    //send 200 OK
+    response.status(200);
+    console.log("200 OK")    
+  }
+})
+
 app.post("/login", async (request, response) => {
   //recieves the username and password
   var data = request.body;
@@ -156,8 +190,6 @@ async function fillLogs(userInfo, success){
     }else{console.log("1 record inserted", result.affectedRows)}
   })
 }
-
-
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);

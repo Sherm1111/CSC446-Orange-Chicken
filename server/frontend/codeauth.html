@@ -7,14 +7,15 @@
 
 <h1>Authentication</h1>
 
-<p>Provide the 8-digit code provided:</p>
+<p>Type the 5-character code provided:</p>
 
-<form action="/action_page.php">
-  <label for="code">Code:</label>
-  <input type="code" id="code" name="code" pattern=".{8,}" title="eight characters">
-  <form method="POST" action="query.html">  
-  <input type="submit">
-</form>
+<div class="content">
+  <!-- code box-->
+  <input id="code" rows="2" cols="20" placeholder="Auth Code"></input>
+  <p></p>
+  <!-- if button is pressed, send the input to the codeauth() function-->
+  <button class="button" onclick="authenticate(document.getElementById('code'))">Submit</button>
+</div>
 
 </body>
 </html>

@@ -153,7 +153,7 @@ async function fillLogs(userInfo, success){
     //console.log(values)
     if (err) {
       console.log(err);
-    }else{console.log("1 record instered", result.affectedRows)}
+    }else{console.log("1 record inserted", result.affectedRows)}
   })
 }
 

@@ -1,13 +1,11 @@
+
+// const { createHash } = require('crypto');
 var parsedUrl = new URL(window.location.href);
 
 
 //logout button
 function logout(){
     window.location.href = '/'
-}
-
-function authenticate(auth) {
-    window.location.href = "/login.html?"+querystr;
 }
 
 function login(usr,passwd) {
@@ -29,7 +27,7 @@ function login(usr,passwd) {
         console.log(response.status)
         //if status is OK move to code authentication page
         if(response.status == 200){
-            codeauth(querystr);
+            window.location.href = "/codeauth.html?"+querystr;;
         }
         else{
             alert("username or password does not match");
@@ -77,8 +75,21 @@ function query() {
     })
 }
 
-function codeauth(querystr) {
-    // change windows
-    window.location.href = "/codeauth.html?"+querystr;
+async function authenticate(code) {    
+    //get generated code
+    var secret_key = "secret";
+    var current_time = Date.now();
+    var rounded_time_30sec = String(current_time - (current_time % 30));
+    var data = rounded_time_30sec + secret_key;
+    var hashed_code = createHash('sha256').update(data).digest('hex');
+    var short_hashed_code = hashed_code.substring(0,5);
+    console.log(short_hashed_code);
+    if(short_hashed_code == code){
+        window.location.href = "/codeauth.html";
+    }
+    else{
+        alert("incorrect code");
+    }
+
 
 }

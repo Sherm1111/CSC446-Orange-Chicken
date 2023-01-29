@@ -82,12 +82,12 @@ function authenticate(code) {
     const querystring = new URLSearchParams(searchParams)
     const tokenarr = Array.from(querystring)
     //add logs to token array to send to api
-    tokenarr.push(code)
+    tokenarr.push({passcode:code.value})
     //post request
     fetch("http://" + parsedUrl.host + "/authCode", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(code)
+        body: JSON.stringify({passcode:code.value})
     })
         .then(async (response) => {
             console.log("break")

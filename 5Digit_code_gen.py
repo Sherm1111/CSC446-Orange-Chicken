@@ -6,10 +6,9 @@ def generate_5Digit_code():
     secret_key = "secret".encode()
 
     current_time = time.time()
-    rounded_time_30sec = str(current_time - (current_time % 30)).encode()
+    rounded_time_30sec = str(int(current_time - (current_time % 30))).encode()
 
     data = rounded_time_30sec + secret_key
-
 
     hashlib_object = hashlib.sha256()
     hashlib_object.update(data)

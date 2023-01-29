@@ -80,18 +80,20 @@ app.post("/query", async (request, response) => {
 })
 
 app.post("/authCode", async (request, response) => {    
-  var code = request.body;
+  var data = request.body;
+  code = data["passcode"];
   
   //get generated code
   var secret_key = "secret";
-  var current_time = Date.now();
+  var current_time = Date.now()/1000; //divide by 1000 to truncate microseconds
+
   var rounded_time_30sec = String(current_time - (current_time % 30));
-  var data = rounded_time_30sec + secret_key;
-  var hashed_code = createHash('sha256').update(data).digest('hex');
+  var timedata = rounded_time_30sec + secret_key;
+  var hashed_code = createHash('sha256').update(timedata).digest('hex');
   var short_hashed_code = hashed_code.substring(0,5);
   
-  console.log("new code = ", short_hashed_code);
-  console.log("old code = ", code);
+  // console.log("new code = ", short_hashed_code);
+  // console.log("old code = ", code);
 
   if (code == '') {
     //code field is blank

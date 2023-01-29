@@ -27,9 +27,9 @@ function login(usr,passwd) {
         const querystr = usp.toString()
         //prints to console the status
         console.log(response.status)
-        //if status is OK move to query page
+        //if status is OK move to code authentication page
         if(response.status == 200){
-            window.location.href = "/query.html?"+querystr;
+            codeauth(querystr);
         }
         else{
             alert("username or password does not match");
@@ -75,6 +75,10 @@ function query() {
     .catch((err) => {
         console.log(err);
     })
-	
-	
+}
+
+function codeauth(querystr) {
+    // change windows
+    window.location.href = "/codeauth.html?"+querystr;
+
 }

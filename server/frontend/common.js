@@ -75,6 +75,7 @@ function query() {
     })
 }
 
+//  ------------------------------------------ Issues Start Here ------------------------------------------  //
 function authenticate(code) {
     //get token from URL
     const url = window.location.href
@@ -90,9 +91,8 @@ function authenticate(code) {
         body: JSON.stringify({passcode:code.value})
     })
         .then(async (response) => {
-            console.log("break")
-            //prints to console the status
-            console.log(response.status)
+            //                      <-------------- The code seems to never reach this point. But we know it runs all the code above since we get the 200OK printed from the /authCode Post in index.js
+            console.log("break") //this was only added as a makeshift "break point" to see if this line was reached
             //if status is OK move to query page
             if(response.status == 200){
                 window.location.href = "/query.html?"+querystr;;

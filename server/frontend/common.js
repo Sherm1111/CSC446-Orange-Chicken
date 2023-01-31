@@ -90,15 +90,12 @@ function authenticate(code) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({passcode:code.value})
     })
-        .then(async (response) => {
-            //                      <-------------- The code seems to never reach this point. But we know it runs all the code above since we get the 200OK printed from the /authCode Post in index.js
-            console.log("break") //this was only added as a makeshift "break point" to see if this line was reached
+        .then( async (response) => {
             //if status is OK move to query page
             if(response.status == 200){
-                window.location.href = "/query.html?"+querystr;;
+                window.location.href = "/query.html?"+querystring;;
             }
             else{
-                console.log("break2")
                 alert("code entered is incorrect");
             }
         })

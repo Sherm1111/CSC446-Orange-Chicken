@@ -92,24 +92,22 @@ app.post("/authCode", async (request, response) => {
   var hashed_code = createHash('sha256').update(timedata).digest('hex');
   var short_hashed_code = hashed_code.substring(0,5);
   
-  // console.log("new code = ", short_hashed_code);       // <------------ The code generator works, and these lines can be uncommented if you want to test it
-  // console.log("old code = ", code);
 
   //code field is blank
   if (code == '') {
-    response.status(400);
+    response.status(400).send();
     console.log("400 blank")
 
   //if the input code does not match
   } else if (code != short_hashed_code){
-    response.status(400);
+    response.status(400).send();
     console.log("400 no match")
 
   //if the codes match
   } else if (short_hashed_code == code){
     //send 200 OK
-    response.status(200);
-    console.log("200 OK")    // <---- this prints, so the correct status should also be being sent to the front end
+    response.status(200).send();
+    console.log("200 OK")   
   }
 })
 

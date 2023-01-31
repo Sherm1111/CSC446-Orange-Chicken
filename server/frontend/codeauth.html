@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-    <link type="text/css" rel="stylesheet" href="common.css">
+    <link type="text/css" rel="stylesheet" href="codeauth.css">
     <script type="text/javascript" src="common.js"></script>
   <body>
+	<div class="codeauth-box">
+		<h1 id="codeauth-title" >Authentication</h1>
 
-    <h1>Authentication</h1>
+		<p id="codeauth-message" >Type the 5-character code provided:</p>
 
-    <p>Type the 5-character code provided:</p>
-
-    <div class="content">
-      <!-- code box-->
-      <input id="code" rows="2" cols="20" placeholder="Auth Code"></input>
-      <p></p>
-      <!-- if button is pressed, send the input to the codeauth() function-->
-      <button class="button" onclick="authenticate(document.getElementById('code'))">Submit</button>
-    </div>
+		<!-- <div class="codeauth-content"> -->
+			<!-- code box-->
+			<input id="code" rows="2" cols="20" placeholder="Auth Code" ></input>
+			<p></p>
+			<!-- if button is pressed, send the input to the codeauth() function-->
+			<button class="button" onclick="authenticate(document.getElementById('code'))" >Submit</button>
+		<!-- </div> -->
+	</div> 
 
   </body>
 </html>

@@ -1,0 +1,43 @@
+body {
+    background-color: #eba054;
+}
+.button {
+    background-color: black;
+    border: none;
+    color: whitesmoke;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    border: 2px solid rgb(18, 234, 21);
+}
+.button:hover{
+    background-color: azure;
+    color: black;
+    box-shadow: 0 4px 8px 0 black, 0 5px 10px 0 black;
+}
+.codeauth-box{
+	display: grid;
+	justify-content: center;
+	background-color: white;
+	margin: 10% 20%;
+	width: 500px;
+	padding: 2px;
+	
+	border: 20px solid orange;
+	border-image-source: url(faviconborder.png);
+	border-image-slice: 32;
+	border-image-repeat: repeat;
+	/* border-image-outset: 10px; */
+}
+#codeauth-message{
+	text-align: center;
+}
+#code{
+	align-items: center;
+}
+.codeauth-content{
+	
+}

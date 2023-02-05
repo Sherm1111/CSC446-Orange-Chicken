@@ -25,21 +25,85 @@ let connection = mysql.createConnection({
 
 app.use("/", express.static("frontend"));
 
+//registration route
+app.post("/register", async (request, response) =>{
+  var data = request.body
+  var username = data['username']
+  var password = data['password']
+  //creates a hash of the password
+  var password_hash = createHash('sha256').update(password).digest('hex');
+  var email = data['email']
+  var role = data['role']
+
+  try{
+    //inserts into table
+    const sql = `INSERT INTO users (username, password, email, role ) VALUES (?, ?, ?, ?)`;
+    const values = [username, password_hash, email, role];
+
+    connection.query(sql, values, function(err, result) {
+      
+      if (err) {
+        console.log(err);
+      }else{
+        console.log("1 record inserted", result.affectedRows)
+        response.send("ok")
+      }
+    })
+  }catch{
+    response.send("error")
+  }
+})
+
+//gets comments from database
+app.post("/getComments", async (request,response) => {
+  var data = request.body
+  SQL = "SELECT * FROM comment WHERE blog = ?;" 
+  values = [data['recipe']]
+  //query's database for the specific entries from the specific recipe page
+  connection.query(SQL, values, (error, results, fields) => {
+    if (error) {
+      console.error(error.message);
+      response.status(500).send("database error");
+    } else {
+      //sends query result
+      response.send(JSON.stringify(results));
+    }
+  })
+})
+
+//posts the comment to database
+app.post("/comments", async (request, response) => {
+  var data = request.body
+  console.log(data['comment'])
+  try{
+    //must have a jwt to submit token
+    const arr = jwt.verify(data['token'][0][1],'secret')
+    const sql = `INSERT INTO comment (blog, username, comment) VALUES (?, ?, ?)`;
+    const values = [data['recipe'], arr['username'], data['comment']];
+    console.log(arr['role'])
+    connection.query(sql, values, (error, results, fields) => {
+      if(error){
+        console.log(error)
+      }else{
+        console.log("comment inserted")
+      }
+    })
+  }catch{
+    //if no username or other error send back error message
+    console.log("here")
+    response.send("error")
+  }
+
+})
 
 app.post("/query", async (request, response) => {
   //get the jwt
   var data = request.body;
   SQL = "SELECT * FROM "+data[1]+";"
-  //console.log(SQL)
-  //console.log(data)
   //verify
   try{
     const arr = jwt.verify(data[0][1],'secret')
-    //console.log(arr['role'])
-    //console.log(data[0][1])
     if(data[1] == "logs" && (arr['role'] == 'admin' || arr['role'] == 'IT')){
-      //jwt.verify(data[0][1],'secret')
-      //console.log(jwt.verify(data[0][1],'secret'))
       connection.query(SQL, [true], (error, results, fields) => {
         if (error) {
           console.error(error.message);
@@ -82,8 +146,9 @@ app.post("/query", async (request, response) => {
 //generate a code and see if the code passed matches the code generated
 app.post("/authCode", async (request, response) => {    
   var data = request.body;
-  code = data["passcode"];
   
+  code = data[1]["passcode"];
+
   //get generated code
   var secret_key = "secret";
   var current_time = Date.now()/1000; //divide by 1000 to truncate microseconds
@@ -92,22 +157,46 @@ app.post("/authCode", async (request, response) => {
   var hashed_code = createHash('sha256').update(timedata).digest('hex');
   var short_hashed_code = hashed_code.substring(0,5);
   
+  try{
+    const arr = jwt.verify(data[0][1],'secret')
 
-  //code field is blank
-  if (code == '') {
-    response.status(400).send();
-    console.log("400 blank")
+    if ((arr['role'] == 'admin') || arr['role'] == 'IT'){
+      //code field is blank
+      if (code == '') {
+        response.status(400).send();
+        console.log("400 blank")
 
-  //if the input code does not match
-  } else if (code != short_hashed_code){
-    response.status(400).send();
-    console.log("400 no match")
+      //if the input code does not match
+      } else if (code != short_hashed_code){
+        response.status(400).send();
+        console.log("400 no match")
 
-  //if the codes match
-  } else if (short_hashed_code == code){
-    //send 200 OK
-    response.status(200).send();
-    console.log("200 OK")   
+      //if the codes match
+      } else if (short_hashed_code == code){
+        //send 200 OK
+        response.send("admin");
+        console.log("200 OK")   
+      }
+    }else{
+      //code field is blank
+      if (code == '') {
+      response.status(400).send();
+      console.log("400 blank")
+    
+      //if the input code does not match
+      } else if (code != short_hashed_code){
+      response.status(400).send();
+      console.log("400 no match")
+      
+      //if the codes match
+      } else if (short_hashed_code == code){
+      //send 200 OK
+      response.status(200).send();
+      console.log("200 OK") 
+      }
+    }
+  }catch{
+
   }
 })
 
@@ -136,7 +225,7 @@ app.post("/login", async (request, response) => {
         //compares hashed password in database with hashed and salted password given from user.
       } else if (await bc.compare(results[0]['password'], hashpass2)){
         //create token
-        var token = jwt.sign(results[0], "secret", {expiresIn:"30s"})
+        var token = jwt.sign(results[0], "secret", {expiresIn:"600s"}) //10 min expiration
         //send 200 OK
         console.log("200 OK")
         fillLogs(data,true)

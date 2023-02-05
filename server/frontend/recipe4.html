@@ -6,13 +6,20 @@
     <head>
     </head>
     <body>
-        Blog
+        Recipe 4
         <button onclick="recipe1()">Recipe 1</button>
         <button onclick="recipe2()">Recipe 2</button>
         <button onclick="recipe3()">Recipe 3</button>
-        <button onclick="recipe4()">Recipe 4</button>
         <button class="reg" onclick="register()">Sign up</button>
-        <button class="logout" onclick="logout()">Sign in</button>
-
+        <button class="logout" onclick="logout()">Home</button>
+    </body>
+    <body>
+        <textarea id="commentSection"></textarea>
+        <script> 
+            window.onload = commentSection("recipe4")
+        </script>
+        <h1>Comment Section</h1>
+        <input id="comment" rows="4" cols="50"></input>
+        <button class="submitComment" onclick="submitComment('recipe4', document.getElementById('comment'))">Submit</button>
     </body>
 </html>

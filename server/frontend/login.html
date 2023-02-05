@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+	<link type="text/css" rel="stylesheet" href="login.css">
+    <script type="text/javascript" src="common.js"></script>
+    <head>
+		<!-- This is linking fonts for css later -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Eczar&display=swap" rel="stylesheet">
+		
+        <title>
+            Access Control Project
+        </title>
+    </head>
+
+    <body>
+		<div class="welcome-message">
+			<div class="title">
+				<h1>Welcome to the Orange Chicken Office!</h1>
+			</div>
+			<div class="instructions">
+				<h3>Please enter in your username and password below</h3>
+			</div>
+		</div>
+        <div class="content">
+            <button onclick="window.location.href = '/index.html'">Blog</button>
+            <button class="reg" onclick="register()">Sign up</button>
+            <!-- user name and password boxes-->
+            <input id="usr" rows="2" cols="20" placeholder="Username"></input>
+            <input id= "passwd" rows="2" cols="20" placeholder="Password" type="password"></input>
+            <p></p>
+            <!-- if buttons pressed sends the input to the login() function-->
+            <button class="button" onclick="login(document.getElementById('usr'),document.getElementById('passwd'))">login</button>
+		</div>
+    </body>
+</html>

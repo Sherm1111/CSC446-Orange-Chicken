@@ -88,3 +88,18 @@ VALUES(
     "user",
     "roles"
 ); 
+
+CREATE TABLE comment (
+    
+    blog VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    comment VARCHAR(255) NOT NULL,
+    PRIMARY KEY (comment)
+);
+
+INSERT INTO comment
+VALUES(
+    "recipe1",
+    "test",
+    "this is a test comment"
+)

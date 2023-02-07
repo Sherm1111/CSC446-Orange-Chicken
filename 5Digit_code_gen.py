@@ -2,8 +2,8 @@ import time
 import hashlib
 
 
-def generate_5Digit_code():
-    secret_key = "secret".encode()
+def generate_5Digit_code(key):
+    secret_key = key.encode()
 
     current_time = time.time()
     rounded_time_30sec = str(int(current_time - (current_time % 30))).encode()
@@ -16,14 +16,15 @@ def generate_5Digit_code():
 
     return hashed_code[0:5]
 
-code = generate_5Digit_code()
+key = input("Provide your auth code: ")
+code = generate_5Digit_code(key)
 print(code, flush = True)
 time.sleep(2)
 
 while (True):
     # print("a")
     time.sleep(1)
-    newcode = generate_5Digit_code()
+    newcode = generate_5Digit_code(key)
     if(newcode != code):
         print(newcode, flush = True)
         code = newcode

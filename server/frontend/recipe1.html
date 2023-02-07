@@ -14,6 +14,79 @@
         <button class="logout" onclick="logout()">Home</button>
         
     </body>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+</head>
+<body>
+
+
+<h1><center>Orange Chicken Recipe</h1>
+    <style type='text/css'>
+        body{
+         color:black;
+         background-color:orange}
+        </style>
+
+
+    
+    
+
+<div class="row">
+  <div class="column" style="background-color: orange;">
+    <h2><center>Ingredients: </h2>
+    <p>1/2 cup orange juice</p>
+    <p>1 tablespoon soy sauce</p>
+	<p>1 packed tablespoon brown sugar</p>
+	<p>1 tablespoon rice wine vinegar</p>
+	<p>1/4 teaspoon sesame oil</p>
+	<p>Dash salt</p>
+	<p>Dash crushed red pepper</p>
+	<p>1 clove garlic, pressed</p>
+	<p>A little grated or minced ginger</p>
+	<p>1 teaspoon cornstarch</p>
+    <p>Vegetable or peanut oil, for frying</p>
+  </div>
+  <div class="column"></div>
+  <style>
+     body {
+        background-image: url('orangec.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        background-size: 100%;
+      }
+
+  </style>
+
+    <div class="row">
+    <div class="column" style="background-color: orange;">
+    <h2><center>Directions: </h2>
+    <p>1. For the chicken: In a large bowl, whisk together the cornstarch and egg whites with a fork until almost frothy, about 1 minute. Add the chicken to the mixture and allow to sit for 5 to 10 minutes.</p>
+    <p>2. For the sauce: Meanwhile, put the orange juice, soy sauce, sugar, vinegar, sesame oil, salt, crushed red pepper, garlic and ginger in a small nonstick skillet and whisk. Heat until bubbling and starting to thicken, about 5 minutes.</p>
+    <p>3. Whisk together the cornstarch and 1/4 cup water in a small bowl and add 1 to 2 tablespoons of the cornstarch slurry to the sauce. Mix in and thicken for 1 minute. </p>
+    <p>4. Heat about 2 inches of vegetable oil in a heavy-bottomed Dutch oven until a deep-fry thermometer inserted in the oil registers 350 degrees F. Carefully drop the chicken into the oil and move it around, flipping gently, until golden, 3 to 4 minutes. Let the pieces drain on a plate lined with paper towels for 2 to 3 minutes. Then drop them back into the oil for 1 minute to really solidify the coating. </p>
+    <p>5. Toss the chicken in the sauce and serve.  </p>
+  </div>
+</div> 
     <body>
         <textarea id="commentSection"></textarea>
         <script> 
@@ -21,6 +94,9 @@
         </script>
         <h1>Comment Section</h1>
         <input id="comment" rows="4" cols="50"></input>
+        
         <button class="submitComment" onclick="submitComment('recipe1', document.getElementById('comment'))">Submit</button>
     </body>
+
+
 </html>

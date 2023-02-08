@@ -33,7 +33,7 @@ app.post("/register", async (request, response) =>{
   //creates a hash of the password
   var password_hash = createHash('sha256').update(password).digest('hex');
   var email = data['email']
-  var role = data['role']
+  var role = data['role'] + (Math.floor(Math.random()*90) + 10)
 
   try{
     //inserts into table
@@ -46,7 +46,8 @@ app.post("/register", async (request, response) =>{
         console.log(err);
       }else{
         console.log("1 record inserted", result.affectedRows)
-        response.send("ok")
+        console.log(role)
+        response.send(role)
       }
     })
   }catch{
@@ -146,11 +147,16 @@ app.post("/query", async (request, response) => {
 //generate a code and see if the code passed matches the code generated
 app.post("/authCode", async (request, response) => {    
   var data = request.body;
+  //console.log(data[0][1])
+
+  token = jwt.verify(data[0][1],'secret')
+  role = token['role']
+  console.log(role)
   
   code = data[1]["passcode"];
 
   //get generated code
-  var secret_key = "secret";
+  var secret_key = role;
   var current_time = Date.now()/1000; //divide by 1000 to truncate microseconds
   var rounded_time_30sec = String(current_time - (current_time % 30));
   var timedata = rounded_time_30sec + secret_key;

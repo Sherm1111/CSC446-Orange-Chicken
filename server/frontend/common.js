@@ -115,7 +115,7 @@ function registered(user,passwd,email,role) {
     })
     .then(async (response) => {
         if(response.status == 200){
-            alert("Account Registered")
+            alert("Account Registered\nPlease write this code down for MFA: " + (await response.text()))
             window.location.href = "/login.html"
         }
     })

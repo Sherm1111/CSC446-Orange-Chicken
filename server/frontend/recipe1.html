@@ -71,25 +71,27 @@
   </style>
 
     <div class="row">
-    <div class="column" style="background-color: orange;">
-    <h2><center>Directions: </h2>
-    <p>1. For the chicken: In a large bowl, whisk together the cornstarch and egg whites with a fork until almost frothy, about 1 minute. Add the chicken to the mixture and allow to sit for 5 to 10 minutes.</p>
-    <p>2. For the sauce: Meanwhile, put the orange juice, soy sauce, sugar, vinegar, sesame oil, salt, crushed red pepper, garlic and ginger in a small nonstick skillet and whisk. Heat until bubbling and starting to thicken, about 5 minutes.</p>
-    <p>3. Whisk together the cornstarch and 1/4 cup water in a small bowl and add 1 to 2 tablespoons of the cornstarch slurry to the sauce. Mix in and thicken for 1 minute. </p>
-    <p>4. Heat about 2 inches of vegetable oil in a heavy-bottomed Dutch oven until a deep-fry thermometer inserted in the oil registers 350 degrees F. Carefully drop the chicken into the oil and move it around, flipping gently, until golden, 3 to 4 minutes. Let the pieces drain on a plate lined with paper towels for 2 to 3 minutes. Then drop them back into the oil for 1 minute to really solidify the coating. </p>
-    <p>5. Toss the chicken in the sauce and serve.  </p>
-  </div>
-</div> 
+		<div class="column" style="background-color: orange;">
+			<h2><center>Directions: </h2>
+			<p>1. For the chicken: In a large bowl, whisk together the cornstarch and egg whites with a fork until almost frothy, about 1 minute. Add the chicken to the mixture and allow to sit for 5 to 10 minutes.</p>
+			<p>2. For the sauce: Meanwhile, put the orange juice, soy sauce, sugar, vinegar, sesame oil, salt, crushed red pepper, garlic and ginger in a small nonstick skillet and whisk. Heat until bubbling and starting to thicken, about 5 minutes.</p>
+			<p>3. Whisk together the cornstarch and 1/4 cup water in a small bowl and add 1 to 2 tablespoons of the cornstarch slurry to the sauce. Mix in and thicken for 1 minute. </p>
+			<p>4. Heat about 2 inches of vegetable oil in a heavy-bottomed Dutch oven until a deep-fry thermometer inserted in the oil registers 350 degrees F. Carefully drop the chicken into the oil and move it around, flipping gently, until golden, 3 to 4 minutes. Let the pieces drain on a plate lined with paper towels for 2 to 3 minutes. Then drop them back into the oil for 1 minute to really solidify the coating. </p>
+			<p>5. Toss the chicken in the sauce and serve.  </p>
+	  </div>
+	</div> 
+	
     <body>
-        <textarea id="commentSection"></textarea>
-        <script> 
-            window.onload = commentSection("recipe1")
-        </script>key = input("Provide your auth code")
-        <h1 style="color: white">Comment Section</h1>
-        <input id="comment" rows="4" cols="50"></input>
-        
-        <button class="submitComment" onclick="submitComment('recipe1', document.getElementById('comment'))">Submit</button>
-    </body>
+		<div class="comment-bottom">
+			<h1>Comment Section</h1>
+			<input id="comment" rows="4" cols="50"></input>
+			<button class="submitComment" onclick="submitComment('recipe1', document.getElementById('comment'))">Submit</button>
+			<textarea id="commentSection"></textarea>
+			<script> 
+				window.onload = commentSection("recipe1")
+			</script>
+		</div>
+   </body>
 
 
 </html>

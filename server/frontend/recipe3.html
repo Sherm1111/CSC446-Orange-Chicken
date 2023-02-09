@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-	<link type="text/css" rel="stylesheet" href="common.css">
+	<link type="text/css" rel="stylesheet" >
     <script type="text/javascript" src="common.js"></script>
     <head>
     </head>
+    
     <body>
         Recipe 3
         <button onclick="recipe1()">Recipe 1</button>
@@ -12,14 +13,90 @@
         <button onclick="recipe4()">Recipe 4</button>
         <button class="reg" onclick="register()">Sign up</button>
         <button class="logout" onclick="logout()">Home</button>
+        
     </body>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+</head>
+<body>
+
+
+<h1><center>Chicken Teriyaki</h1>
+
+
+<div class="row">
+  <div class="column" style="background-color: orange;">
+    <h2><center>Ingredients: </h2>
+    <p>1. Chicken breasts: use boneless skinless. 
+        <p>2. Olive oil: Vegetable oil can be used here as well.
+        <p>3. Low-sodium soy sauce.
+        <p>4. Honey
+        <p>5. Brown sugar
+        <p>6. Rice vinegar
+        <p>7. Sesame oil
+        <p>8. Ginger
+        <p>9. Garlic
+        <p>10. Cornstarch. </p>
+  </div>
+  <div class="column"></div>
+  <style>
+     body {
+        background-image: url('chickent.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        background-size: 100%;
+      }
+
+  </style>
+
+    <div class="row">
+    <div class="column" style="background-color: orange;">
+    <h2><center>Directions: </h2>
+    <p>1. Heat oil in a large non-stick skillet or wok.</p>
+    <p>2. Add chicken and let cook (giving space between pieces) until slightly browned on bottom then flip chicken pieces over and cook through.    </p>
+    <p>3. While the chicken is cooking whisk together the teriyaki sauce mixture. </p>
+    <p>4. Pour sauce into the skillet once the chicken is just nearly finished cooking through and let the sauce cook and simmer until thickened. </p>
+    <p>5. Easy as that! Serve it warm over brown or white rice with steamed veggies.  </p>
+
+    
+
+
+  </div>
+</div> 
     <body>
         <textarea id="commentSection"></textarea>
         <script> 
-            window.onload = commentSection("recipe3")
+            window.onload = commentSection("recipe1")
         </script>
         <h1>Comment Section</h1>
         <input id="comment" rows="4" cols="50"></input>
-        <button class="submitComment" onclick="submitComment('recipe3', document.getElementById('comment'))">Submit</button>
+        
+        <button class="submitComment" onclick="submitComment('recipe1', document.getElementById('comment'))">Submit</button>
+
     </body>
-</html>
+
+</div>
+
+</body>
+   

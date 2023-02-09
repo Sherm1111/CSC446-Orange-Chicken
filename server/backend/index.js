@@ -34,10 +34,11 @@ app.post("/register", async (request, response) =>{
   var password_hash = createHash('sha256').update(password).digest('hex');
   var email = data['email']
   var role = data['role'] + (Math.floor(Math.random()*90) + 10)
+  
 
   try{
     //inserts into table
-    const sql = `INSERT INTO users (username, password, email, role ) VALUES (?, ?, ?, ?)`;
+    const sql = `INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, ?)`;
     const values = [username, password_hash, email, role];
 
     connection.query(sql, values, function(err, result) {
@@ -75,12 +76,13 @@ app.post("/getComments", async (request,response) => {
 //posts the comment to database
 app.post("/comments", async (request, response) => {
   var data = request.body
+  var timestamp = Math.floor(Date.now() / 1000);
   console.log(data['comment'])
   try{
     //must have a jwt to submit token
     const arr = jwt.verify(data['token'][0][1],'secret')
-    const sql = `INSERT INTO comment (blog, username, comment) VALUES (?, ?, ?)`;
-    const values = [data['recipe'], arr['username'], data['comment']];
+    const sql = `INSERT INTO comment (blog, username, comment, timestamp) VALUES (?, ?, ?, ?)`;
+    const values = [data['recipe'], arr['username'], data['comment'], timestamp];
     console.log(arr['role'])
     connection.query(sql, values, (error, results, fields) => {
       if(error){

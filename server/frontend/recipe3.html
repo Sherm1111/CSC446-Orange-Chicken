@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-	<link type="text/css" rel="stylesheet" href="recipe.css">
-    <script type="text/javascript" src="common.js"></script>
     <head>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+		<link type="text/css" rel="stylesheet" href="recipe.css">
+		<script type="text/javascript" src="common.js"></script>
+		<title>Chicken Teriyaki</title>
     </head>
     <div class="top-buttons">
 		<body>
@@ -38,10 +39,9 @@
 }
 
 </style>
-</head>
 <body>
 
-<h1 style="color: white;"><center>Chicken Teriyaki Recipe</h1>
+<h1 id="title"><center>Chicken Teriyaki Recipe</h1>
 
 
 <div class="row">
@@ -84,15 +84,16 @@
   </div>
 </div> 
     <body>
-        <textarea id="commentSection"></textarea>
-        <script> 
-            window.onload = commentSection("recipe1")
-        </script>
-        <h1>Comment Section</h1>
-        <input id="comment" rows="4" cols="50"></input>
-        
-        <button class="submitComment" onclick="submitComment('recipe1', document.getElementById('comment'))">Submit</button>
-
+		<div class="comment-bottom">
+			<h1>Comment Section</h1>
+			<input id="comment" rows="4" cols="50"></input>
+			
+			<button class="submitComment" onclick="submitComment('recipe1', document.getElementById('comment'))">Submit</button>
+			<textarea id="commentSection"></textarea>
+			<script> 
+				window.onload = commentSection("recipe1")
+			</script>
+		</div>
     </body>
 
 </div>

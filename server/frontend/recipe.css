@@ -19,3 +19,11 @@ button{
 	margin: -10px;
 	padding: 7px;
 }
+#title{
+	color: white;
+	font-size: 300%;
+	text-shadow: -2px 2px 0 #000,
+				2px 2px 0 #000,
+				2px -2px 0 #000,
+				-2px -2px 0 #000;
+}

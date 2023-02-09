@@ -8,3 +8,7 @@ textarea{
 button{
 	color: black;
 }
+.comment-bottom{
+	color: black;
+	background-color: lightgreen;
+}

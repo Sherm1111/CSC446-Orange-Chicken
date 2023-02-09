@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-	<link type="text/css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="recipe.css">
     <script type="text/javascript" src="common.js"></script>
     <head>
     </head>
@@ -80,14 +80,17 @@
   </div>
 </div> 
     <body>
-        <textarea id="commentSection"></textarea>
-        <script> 
-            window.onload = commentSection("recipe1")
-        </script>key = input("Provide your auth code")
-        <h1 style="color: white">Comment Section</h1>
-        <input id="comment" rows="4" cols="50"></input>
-        
-        <button class="submitComment" onclick="submitComment('recipe1', document.getElementById('comment'))">Submit</button>
+		<div class="comment-bottom">
+
+			<h1 style="color: black">Comment Section</h1>
+			<input id="comment" rows="4" cols="50"></input>
+			
+			<button class="submitComment" onclick="submitComment('recipe1', document.getElementById('comment'))">Submit</button>
+			<textarea id="commentSection"></textarea>
+			<script> 
+				window.onload = commentSection("recipe1")
+			</script>
+		</div>
     </body>
 
 

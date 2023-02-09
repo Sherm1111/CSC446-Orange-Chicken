@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-	<link type="text/css" rel="stylesheet" href="common.css">
+	<link type="text/css" rel="stylesheet" href="recipe.css">
     <script type="text/javascript" src="common.js"></script>
     <head>
     </head>
@@ -14,12 +14,15 @@
         <button class="logout" onclick="logout()">Home</button>
     </body>
     <body>
-        <textarea id="commentSection"></textarea>
-        <script> 
-            window.onload = commentSection("recipe4")
-        </script>
-        <h1>Comment Section</h1>
-        <input id="comment" rows="4" cols="50"></input>
-        <button class="submitComment" onclick="submitComment('recipe4', document.getElementById('comment'))">Submit</button>
+		<div class="comment-bottom">
+
+			<h1>Comment Section</h1>
+			<input id="comment" rows="4" cols="50"></input>
+			<button class="submitComment" onclick="submitComment('recipe4', document.getElementById('comment'))">Submit</button>
+			<textarea id="commentSection"></textarea>
+			<script> 
+				window.onload = commentSection("recipe4")
+			</script>
+		</div>
     </body>
 </html>

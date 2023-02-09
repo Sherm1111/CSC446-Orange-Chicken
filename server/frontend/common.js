@@ -58,10 +58,8 @@ function commentSection(recipe){
     )
     .then((data) => {
         //multiple comments are combined
-        console.log(data)
         str = ""
         data1 = (JSON.parse(data))
-        console.log(data1[1]['comment'])
         for(var i = 0; i < data1.length; i++){
             str = str + data1[i]['username'] + "\t\t\t\t" + data1[i]['comment'] + "\n"
         }

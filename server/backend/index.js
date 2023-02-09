@@ -46,8 +46,6 @@ app.post("/register", async (request, response) =>{
       if (err) {
         console.log(err);
       }else{
-        console.log("1 record inserted", result.affectedRows)
-        console.log(role)
         response.send(role)
       }
     })
@@ -77,13 +75,11 @@ app.post("/getComments", async (request,response) => {
 app.post("/comments", async (request, response) => {
   var data = request.body
   var timestamp = Math.floor(Date.now() / 1000);
-  console.log(data['comment'])
   try{
     //must have a jwt to submit token
     const arr = jwt.verify(data['token'][0][1],'secret')
     const sql = `INSERT INTO comment (blog, username, comment, timestamp) VALUES (?, ?, ?, ?)`;
     const values = [data['recipe'], arr['username'], data['comment'], timestamp];
-    console.log(arr['role'])
     connection.query(sql, values, (error, results, fields) => {
       if(error){
         console.log(error)
@@ -93,7 +89,6 @@ app.post("/comments", async (request, response) => {
     })
   }catch{
     //if no username or other error send back error message
-    console.log("here")
     response.send("error")
   }
 
@@ -112,7 +107,6 @@ app.post("/query", async (request, response) => {
           console.error(error.message);
           response.status(500).send("database error");
         } else {
-          //console.log(results);
           response.send(results);
         }
      
@@ -123,7 +117,6 @@ app.post("/query", async (request, response) => {
           console.error(error.message);
           response.status(500).send("database error");
         } else {
-          //console.log(results);
           response.send(results);
         }
       })
@@ -133,7 +126,6 @@ app.post("/query", async (request, response) => {
           console.error(error.message);
           response.status(500).send("database error");
         } else {
-          //console.log(results);
           response.send(results);
         }
       })
@@ -149,11 +141,9 @@ app.post("/query", async (request, response) => {
 //generate a code and see if the code passed matches the code generated
 app.post("/authCode", async (request, response) => {    
   var data = request.body;
-  //console.log(data[0][1])
 
   token = jwt.verify(data[0][1],'secret')
   role = token['role']
-  console.log(role)
   
   code = data[1]["passcode"];
 
@@ -213,7 +203,6 @@ app.post("/login", async (request, response) => {
   var data = request.body;
   // hashes pass word
   const hashpass2 = await hashPassword(data['password']);
-  //console.log(hashpass2)
   //makes username something usable for later in code
   user = "'"+data["username"]+"'";
   //query username and passwords from sql database, only if the username is the username input 
@@ -242,13 +231,11 @@ app.post("/login", async (request, response) => {
         
       } else {
         //if username/password are not in database in correct order prevent login
-        //console.log(bc.compare(results[0]['password']))
         response.status(400).send("UNAUTHORIZED");
         fillLogs(data, false)
       }
     } catch (error){
       console.log("--UNAUTHORIZED");
-      //console.log(error)
       response.status(400).send("UNAUTHORIZED");
       //await fillLogs(data);
     }
@@ -257,14 +244,11 @@ app.post("/login", async (request, response) => {
 
 
 async function hashPassword(password){
-  //console.log(data)
   var salt = await bc.genSalt();
   // hashes password gotten from user
   var hashpass = createHash('sha256').update(password).digest('hex');
-  //console.log(hashpass)
   //hashes password again using bcrypt
   var hashpass1 = await bc.hash(hashpass, salt);
-  //console.log(typeof(hashpass1))
   return hashpass1
 }
 
@@ -279,7 +263,6 @@ async function fillLogs(userInfo, success){
   const values = [username, password, timeStamp, success, auth];
 
   connection.query(sql, values, function(err, result) {
-    //console.log(values)
     if (err) {
       console.log(err);
     }else{console.log("1 record inserted", result.affectedRows)}

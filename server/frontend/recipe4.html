@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
-	<link type="text/css" rel="stylesheet" href="common.css">
+	<link type="text/css" rel="stylesheet">
     <script type="text/javascript" src="common.js"></script>
     <head>
     </head>
@@ -13,6 +13,74 @@
         <button class="reg" onclick="register()">Sign up</button>
         <button class="logout" onclick="logout()">Home</button>
     </body>
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    </style>
+    </head>
+    <body>
+    
+    
+    <h1><center>Garlic Chicken Pasta</h1>
+    
+    
+    <div class="row">
+      <div class="column" style="background-color: orange;">
+        <h2><center>Ingredients: </h2>
+            <p>1. Pasta
+            <p>2. Chicken Breasts
+            <p>3. Seasonings: Garlic powder, Italian seasoning, paprika, salt, and pepper to add more flavor to this dish.
+            <p>4. Olive Oil
+            <p>5. Butter
+            <p>6. Garlic
+            <p>7. Tomatoes
+            <p>8. Spinach
+            <p>9. Heavy Cream
+            <p>10. Parmesan Cheese </p>
+            
+      </div>
+      <div class="column"></div>
+      <style>
+         body {
+            background-image: url('pastac.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            background-size: 100%;
+          }
+    
+      </style>
+    
+        <div class="row">
+        <div class="column" style="background-color: orange;">
+        <h2><center>Directions: </h2>
+        <p>1. Prep Pasta: Boil water in a large pot and cook pasta al dente according to package instructions.
+        <p>2. Season both sides of chicken breasts with salt garlic powder, Italian seasoning, paprika, and a generous pinch of salt and pepper.
+        <p>3. Heat olive oil in a large heavy duty pan over medium-high heat and cook chicken breasts 5 minutes per side or until cooked through. Remove from heat and set aside.
+        <p>4. To the same pan, add the butter and garlic and cook for 1 minute or until fragrant. Add the tomato and spinach and cook 2-3 minutes or until the tomato and spinach are soft and wilted.
+        <p>5. Reduce the heat and add the heavy cream and parmesan cheese. Whisk until fully incorporated and creamy. Add a pinch of salt and pepper to taste.
+        <p>6. Drain pasta and slice chicken into thin slices or cubes and return to the same pan. Stir to combine and serve!
+      </div>
+    </div> 
     <body>
         <textarea id="commentSection"></textarea>
         <script> 
@@ -21,5 +89,9 @@
         <h1>Comment Section</h1>
         <input id="comment" rows="4" cols="50"></input>
         <button class="submitComment" onclick="submitComment('recipe4', document.getElementById('comment'))">Submit</button>
+    </body>
+    
+    </div>
+    
     </body>
 </html>

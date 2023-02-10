@@ -1,5 +1,5 @@
 body {
-    background-color: #eba054;
+    background-color: hsl(30, 79%, 63%);
 }
 .content{
     /* position:absolute; */
@@ -21,7 +21,7 @@ body {
 h1{
 	text-align:center;
 	font-family: 'DM Serif Display', serif;
-	margin-top: 7%;
+	margin-top: -5%;
 }
 
 .button {

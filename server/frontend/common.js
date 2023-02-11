@@ -61,7 +61,7 @@ function commentSection(recipe){
         str = ""
         data1 = (JSON.parse(data))
         for(var i = 0; i < data1.length; i++){
-            str = str + data1[i]['username'] + "\t\t\t\t" + data1[i]['comment'] + "\n"
+            str = str + data1[i]['username'] + ":<br>" + data1[i]['comment'] + "<br></br>"
         }
         document.getElementById("commentSection").innerHTML =  str
         //if api sends 401 message go back to login page
@@ -262,10 +262,10 @@ function getCookie(cname) {
     return "";
 }
 
-function checkCookie() {
+function setCookies() {
     let username = getCookie("username");
     if (username != "") {
-        alert("Welcome again " + username);
+        // alert("Welcome again " + username);
     } else {
         username = prompt("Please enter your name:", "");
         if (username != "" && username != null) {
